@@ -1,0 +1,68 @@
+### Java template
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+
+# IntelliJ #
+############
+*.iml
+*.ipr
+*.iws
+.idea
+*.csv
+*.xlsx
+
+# List included csv files
+!faqDataNew.csv
+
+# Temp files
+FULs_to_be_verified*.txt
+
+# IntelliJ
+/out/
+/target/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Allure report #
+#################
+report
+.allure
+
+# include lib folder
+!/lib/*
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+RemoteSystemsTempFiles/
+test-output/
