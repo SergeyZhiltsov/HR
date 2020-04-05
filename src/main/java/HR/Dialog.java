@@ -3,11 +3,15 @@ package HR;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Dialog extends JDialog {
     private JPanel contentPane;
     public  JLabel label;
     private JButton buttonOK;
+    private JButton print;
     private JButton buttonCancel;
 
     public Dialog() {
@@ -23,7 +27,11 @@ public class Dialog extends JDialog {
                 onOK();
             }
         });
-
+        print.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onPrint();
+            }
+        });
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -38,6 +46,27 @@ public class Dialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+    }
+
+    private void onPrint() {
+        FileWriter writer = null; try {
+            writer = new FileWriter("printFile.pdf", false);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            Form2 form2 = new Form2();
+            writer.write(form2.answer1);
+            writer.flush();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        File file = new File("printFile.pdf");
+        try {
+            Desktop.getDesktop().print(file);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void onOK() {
